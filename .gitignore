@@ -1,0 +1,10 @@
+/output/*
+!output/schema.extracted.gql
+/input/*
+!input/schema.gql
+/*env/
+
+# Python
+*.pyc
+*.pyo
+__pycache__/

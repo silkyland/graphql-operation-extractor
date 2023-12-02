@@ -1,0 +1,97 @@
+fragment UserFragment on User {
+  id
+  username
+  email
+  role
+}
+
+fragment ChatFragment on Chat {
+  id
+  users {
+    ...UserFragment
+  }
+  messages {
+    ...ChatMessageFragment
+  }
+}
+
+fragment ChatMessageFragment on ChatMessage {
+  id
+  content
+  time
+  user {
+    ...UserFragment
+  }
+}
+
+fragment NodeFragment on Node {
+  id
+}
+
+fragment SearchResultFragment on SearchResult {
+  ... on User {
+    ...UserFragment
+  }
+  ... on Chat {
+    ...ChatFragment
+  }
+  ... on ChatMessage {
+    ...ChatMessageFragment
+  }
+}
+
+query me {
+  me {
+    ...UserFragment
+  }
+}
+
+query user($id: ID!) {
+  user(id: $id) {
+    ...UserFragment
+  }
+}
+
+query allUsers {
+  allUsers {
+    ...UserFragment
+  }
+}
+
+query search($term: String!) {
+  search(term: $term) {
+    ...SearchResultFragment
+  }
+}
+
+query myChats {
+  myChats {
+    ...ChatFragment
+  }
+}
+
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password)
+}
+
+mutation signup($username: String!, $email: String!, $password: String!) {
+  signup(username: $username, email: $email, password: $password)
+}
+
+mutation createChat($userId: ID!) {
+  createChat(userId: $userId) {
+    ...ChatFragment
+  }
+}
+
+mutation sendMessage($chatId: ID!, $content: String!) {
+  sendMessage(chatId: $chatId, content: $content) {
+    ...ChatMessageFragment
+  }
+}
+
+subscription messageSent($chatId: ID!) {
+  messageSent(chatId: $chatId) {
+    ...ChatMessageFragment
+  }
+}
