@@ -2,6 +2,8 @@
 
 The GraphQLOperationExtractor is a Python project aimed at simplifying the work of developers who use GraphQL. It automatically extracts GraphQL operations such as queries, mutations, and subscriptions, as well as fragments from a GraphQL schema file. This tool is invaluable in reducing the time and effort required in manually generating operation templates from a schema, thereby minimizing potential errors.
 
+[![by me a coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/silkyland)
+
 ## Features
 
 - Extracts GraphQL operations: queries, mutations, and subscriptions from a schema file.
